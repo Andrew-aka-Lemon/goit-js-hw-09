@@ -10,18 +10,15 @@ refs.startBtn.addEventListener('click', onStartClick);
 refs.stopBtn.addEventListener('click', onStopClick);
 
 let inLoop = false;
-// let doGo = false;
 let timeOutID = null;
 
 function onStartClick(event) {
   console.log(event);
-  // doGo = true;
   if (inLoop) {
     return;
   }
   inLoop = true;
   changeColorWithDelay();
-  // refs.body.style.backgroundColor = getRandomHexColor();
 }
 
 function changeColorWithDelay() {
@@ -30,7 +27,6 @@ function changeColorWithDelay() {
   if (inLoop) {
     timeOutID = setTimeout(changeColorWithDelay, 1000);
   }
-  // setTimeout(changeColorWithDelay, 1000);
 }
 
 function onStopClick(event) {
@@ -38,5 +34,3 @@ function onStopClick(event) {
   inLoop = false;
   clearTimeout(timeOutID);
 }
-
-// function starChangeColor(arguments) {}
