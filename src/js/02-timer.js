@@ -1,7 +1,7 @@
 import Notiflix from 'notiflix';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-import timeConverter from './converMStoTime';
+import timeConverter from './convertMStoTime';
 
 let chsnTime = 0;
 
@@ -15,6 +15,7 @@ const options = {
     if (Date.now() > selectedDates[0].getTime()) {
       Notiflix.Notify.failure('Please choose a date in the future');
       startTimerBtnRef.disabled = true;
+
       return;
     }
     startTimerBtnRef.disabled = false;
@@ -48,6 +49,8 @@ function backTimer() {
     // console.log(timeLeft);
     if (timeLeft < 0) {
       clearInterval(intervalID);
+      Notiflix.Notify.info('TIME IS OUT');
+
       return;
     }
     chageTimeInHTML(timeLeft);
@@ -56,7 +59,7 @@ function backTimer() {
 
 function chageTimeInHTML(timeLeft) {
   //   console.log(({ days, hours, minutes, seconds } = timeConverter(timeLeft)));
-  ({ days, hours, minutes, seconds } = timeConverter(timeLeft));
+  const { days, hours, minutes, seconds } = timeConverter(timeLeft);
 
   timerDaysRef.textContent = addLeadingZero(days);
   timerHoursRef.textContent = addLeadingZero(hours);
