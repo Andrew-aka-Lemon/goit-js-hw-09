@@ -41,6 +41,7 @@ startTimerBtnRef.addEventListener('click', backTimer);
 
 function backTimer() {
   Notiflix.Notify.success('Timer started');
+  startTimerBtnRef.disabled = true;
 
   const intervalID = setInterval(() => {
     let timeLeft = (Date.now() - chsnTime) * -1;
