@@ -15,19 +15,7 @@ function onBtnClick(event) {
   const amount = Number(input.amount.value);
   let promiseDelay = Number(input.delay.value);
 
-  // console.log(input.delay.value);
-  // console.log(input.step.value);
-  // console.log(input.amount.value);
-
-  // for (let index = 0; index <= input.amount.value; index++, promiseDelay += input.step.value) {
-  //   createPromise(index, promiseDelay)
-  //     .then(({ position, delay }) => {
-  //       console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-  //     })
-  //     .catch(({ position, delay }) => {
-  //       console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-  //     });
-  // }
+  Notiflix.Notify.info('Зараз буде черга Промісів');
 
   for (let position = 1; position <= amount; position++, promiseDelay += step) {
     // console.log('position', position);
@@ -35,10 +23,12 @@ function onBtnClick(event) {
     // console.log('promiseDelay', promiseDelay);
     createPromise(position, promiseDelay)
       .then(({ position, delay }) => {
-        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        // console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+        // console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+        Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
   }
 }
